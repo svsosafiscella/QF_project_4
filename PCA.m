@@ -41,7 +41,10 @@ elseif option == 2
 % [U,S,V] = svd(A) performs a singular value decomposition of matrix A,
 % such that A = U*S*V'. 
 
-[U,S, V] = svd(X)
+    [U, S, V] = svd(X);
+
+    Y = U*X;
+    P = transpose(V);
     
 else
     
