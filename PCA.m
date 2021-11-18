@@ -29,7 +29,7 @@ if option == 1
 % The eig function returns diagonal matrix D of eigenvalues and matrix V
 % whose columns are the corresponding right eigenvectors
 
-    [V,D] = eig(X*transpose(X));
+    [V, D] = eig(X*transpose(X_2));
 
     Y = V*X;
     P = transpose(V);
@@ -48,9 +48,7 @@ elseif option == 2
     
 else
     
-    disp("The option must be equal to 1 (eigendecomposition) or 2 (SVD)")
-        
-        
+    disp("The option must be equal to 1 (eigendecomposition) or 2 (SVD)")      
     
 end
 
