@@ -34,6 +34,16 @@ if option == 1
     Y = V*X;
     P = transpose(V);
     
+elseif option == 2
+    
+    
+    
+else
+    
+    disp("The option must be equal to 1 (eigendecomposition) or 2 (SVD)")
+        
+        
+    
 end
 
 end
