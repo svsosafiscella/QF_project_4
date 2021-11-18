@@ -29,7 +29,7 @@ if option == 1
 % The eig function returns diagonal matrix D of eigenvalues and matrix V
 % whose columns are the corresponding right eigenvectors
 
-    [V, D] = eig(X*transpose(X_2));
+    [V, D] = eig(X_2*transpose(X_2));
 
     Y = V*X;
     P = transpose(V);
