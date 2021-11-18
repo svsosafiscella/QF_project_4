@@ -34,9 +34,14 @@ if option == 1
     Y = V*X;
     P = transpose(V);
     
+% 4) If option = 2, calculate the SVD of XX^T
+    
 elseif option == 2
     
-    
+% [U,S,V] = svd(A) performs a singular value decomposition of matrix A,
+% such that A = U*S*V'. 
+
+[U,S, V] = svd(X)
     
 else
     
