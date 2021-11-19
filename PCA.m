@@ -54,7 +54,19 @@ else
     
 end
     imagemean = repmat(X_mean,1,N)';
-	subplot(1,1,1), imshow(reshape(imagemean(1,:),[28,28]),[])
+	subplot(2,2,1), imshow(reshape(imagemean(1,:),[28,28]),[])
 	title ('Mean Image')		
+    
+    imageY = Y';
+	subplot(2,2,2), imshow(reshape(imageY(1,:),[28,28]),[])
+	title ('Y Image')
+    
+    imageYP = Y'*P;
+	subplot(2,2,3), imshow(reshape(imageYP(1,:),[28,28]),[])
+	title ('YP Image')
+    
+    imageYP2 = Y'*P';
+	subplot(2,2,4), imshow(reshape(imageYP2(1,:),[28,28]),[])
+	title ('YP2 Image')
 end
 
