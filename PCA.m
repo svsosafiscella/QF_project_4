@@ -21,7 +21,8 @@ N = size(X,2); % number of columns of the data matrix
 X_mean = 1/N * sum(X,2);
 
 % 2) Substract the mean from each column of X
-X_2 = X - repmat(X_mean,1,2);
+%X_2 = X - repmat(X_mean,1,2);
+X_2 = X - repmat(X_mean,1,N);
 
 % 3) If option = 1, calculate the eigen-decomposition of XX^T
 
@@ -44,13 +45,16 @@ elseif option == 2
     [U, S, V] = svd(X);
 
     Y = U*X;
-    P = transpose(V);
+    %P = transpose(V);
+    P = transpose(U);
     
 else
     
     disp("The option must be equal to 1 (eigendecomposition) or 2 (SVD)")      
     
 end
-
+    imagemean = repmat(X_mean,1,N)';
+	subplot(1,1,1), imshow(reshape(imagemean(1,:),[28,28]),[])
+	title ('Mean Image')		
 end
 
