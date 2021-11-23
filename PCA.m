@@ -21,7 +21,7 @@ N = size(X,2); % number of columns of the data matrix
 X_mean = 1/N * sum(X,2);
 
 % 2) Substract the mean from each column of X
-%X_2 = X - repmat(X_mean,1,2);
+
 X_2 = X - repmat(X_mean,1,N);
 
 % 3) If option = 1, calculate the eigen-decomposition of XX^T
@@ -45,7 +45,6 @@ elseif option == 2
     [U, S, V] = svd(X);
 
     Y = U*X;
-    %P = transpose(V);
     P = transpose(U);
     
 else
@@ -53,20 +52,29 @@ else
     disp("The option must be equal to 1 (eigendecomposition) or 2 (SVD)")      
     
 end
-    imagemean = repmat(X_mean,1,N)';
-	subplot(2,2,1), imshow(reshape(imagemean(1,:),[28,28]),[])
-	title ('Mean Image')		
+
+%	subplot(2,2,1), imshow(transpose(reshape(X_mean,[28,28])),[])
+%	title ('Mean Image')		
     
-    imageY = Y';
-	subplot(2,2,2), imshow(reshape(imageY(1,:),[28,28]),[])
-	title ('Y Image')
+%    imageY = Y';
+%	subplot(2,2,2), imshow(transpose(reshape(imageY(1,:),[28,28])),[])
+%	title ('Y Image')
     
-    imageYP = Y'*P;
-	subplot(2,2,3), imshow(reshape(imageYP(1,:),[28,28]),[])
-	title ('YP Image')
+%    imageYP = Y'*P;
+%	subplot(2,2,3), imshow(transpose(reshape(imageYP(1,:),[28,28])),[])
+%	title ('YP Image')
     
-    imageYP2 = Y'*P';
-	subplot(2,2,4), imshow(reshape(imageYP2(1,:),[28,28]),[])
-	title ('YP2 Image')
+%    imageYP2 = Y'*P';
+%	subplot(2,2,4), imshow(transpose(reshape(imageYP2(1,:),[28,28])),[])
+%	title ('YP2 Image')
+
+    disp(size(P))
+    
+    subplot(1,5,1), imshow(transpose(reshape(P(1,:),[28,28])),[min(P(1,:)),max(P(2,:))]) % scale using the min and max of P
+    subplot(1,5,2), imshow(transpose(reshape(P(2,:),[28,28])),[])
+    subplot(1,5,3), imshow(transpose(reshape(P(3,:),[28,28])),[])
+    subplot(1,5,4), imshow(transpose(reshape(P(4,:),[28,28])),[])
+    subplot(1,5,5), imshow(transpose(reshape(P(5,:),[28,28])),[])
+    
 end
 
