@@ -1,4 +1,4 @@
-function [P,Y] = PCA(X,option)
+function [P,s,Y,per] = PCA(X,option)
 
 %
 % INPUT
@@ -22,7 +22,7 @@ X_mean = 1/N * sum(X,2);
 
 % 2) Substract the mean from each column of X
 
-X_2 = X - repmat(X_mean,1,N);
+X = X - repmat(X_mean,1,N);
 
 % 3) If option = 1, calculate the eigen-decomposition of XX^T
 
@@ -30,10 +30,22 @@ if option == 1
 % The eig function returns diagonal matrix D of eigenvalues and matrix V
 % whose columns are the corresponding right eigenvectors
 
-    [V, D] = eig(X_2*transpose(X_2));
-
+    cov_matrix = X*X'./(N-1);
+    [V, D] = eig(cov_matrix);
+    
+    [s, index] = sort(diag(D),'descend');
+    tv = sum(s);
+    V = V(:,index);
+    
+    for i=1:length(s)
+        per(i) = s(i)/tv;
+        tper(i) = sum(per(1:i));
+    end
+    
     Y = V*X;
-    P = transpose(V);
+    P = V;
+    plot(tper,'o');
+    pause;
     
 % 4) If option = 2, calculate the SVD of XX^T
     
@@ -41,11 +53,22 @@ elseif option == 2
     
 % [U,S,V] = svd(A) performs a singular value decomposition of matrix A,
 % such that A = U*S*V'. 
-
-    [U, S, V] = svd(X);
-
+    
+    [U,S,V] = svd(X/sqrt(N-1));
+    
+    s = diag(S);
+    tv = sum(s.^2);
+    
+    for i=length(s)
+        per(i) = s(i)^2/tv;
+        tper(i) = sum(per(1,i));
+    end
+    
+    P = U;
+    plot(tper,'o')
+    pause;
+    
     Y = U*X;
-    P = transpose(U);
     
 else
     
@@ -68,13 +91,8 @@ end
 %	subplot(2,2,4), imshow(transpose(reshape(imageYP2(1,:),[28,28])),[])
 %	title ('YP2 Image')
 
-    disp(size(P))
-    
-    subplot(1,5,1), imshow(transpose(reshape(P(1,:),[28,28])),[min(P(1,:)),max(P(2,:))]) % scale using the min and max of P
-    subplot(1,5,2), imshow(transpose(reshape(P(2,:),[28,28])),[])
-    subplot(1,5,3), imshow(transpose(reshape(P(3,:),[28,28])),[])
-    subplot(1,5,4), imshow(transpose(reshape(P(4,:),[28,28])),[])
-    subplot(1,5,5), imshow(transpose(reshape(P(5,:),[28,28])),[])
-    
+imshow((reshape(X_mean,28,28))',[min(X_mean),max(X_mean)])
+pause;
+
 end
 
