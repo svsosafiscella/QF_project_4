@@ -1,17 +1,28 @@
 function [P,s,X_new,per,m] = pca_digit_all(num)
 
 [img, label] = read_hw;
+%img = img';
 
 img1 = img(:,1:num);
 
-[P, s, X_new, per] = PCA(img1,1);
+[P, s, X_new, per] = pca_class(img1,1);
+m = mean(img1,2);
+
+pause;
+
+I = reshape(m,28,28);
+I = I';
+imshow(I,[min(m),max(m)]);
+
+pause;
 
 for i=1:5
     
     subplot(1,5,i);
     
-    imshow((reshape(P(:,i),28,28))',[min(P(:,i)),max(P(:,i))]);
-    
+    I = reshape(P(:,i),28,28);
+    I = I';
+    imshow(I,[min(P(:,i)),max(P(:,i))]);    
 end
 
 end
