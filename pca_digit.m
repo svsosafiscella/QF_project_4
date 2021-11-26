@@ -2,7 +2,21 @@ function [P,s,X_new,per,m] = pca_digit(idx)
 
 [img, label] = read_hw;
 
-img1 = img(:,idx);
+n = 1;
+for i=1:size(label)
+    
+    if label(i) == idx
+        
+        img1(:,n) = img(:,i);
+        n = n + 1;
+     
+    end
+    
+end
+
+disp('Number of images')
+disp(size(img1,2))
+
 [P, s, X_new, per] = pca_class(img1,2);
 m = mean(img1,2);
 
@@ -34,7 +48,7 @@ for i=1:5
     imshow(I);%,[min(P(i,:)),max(P(i,:))]);
     
     subplot(2,5,i+5);
-    I = reshape(img1(:,i),28,281:);
+    I = reshape(img1(:,i),28,28);
     I = I';
     imshow(I);
 end
@@ -49,4 +63,9 @@ for i=1:5
     
     I = reshape(y(:,i),28,28);
     I = I';
+    imshow(I);
+    
+end
+
+end
     
