@@ -1,4 +1,4 @@
-function [images,labels] = read_data_2(n_subjects, n_images)
+function [images,labels] = read_data(n_subjects, n_images)
 
 %
 % output: 
