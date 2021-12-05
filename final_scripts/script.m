@@ -8,12 +8,14 @@ disp('Data read!')
 %    reconstructed images
 
 disp('Performing PCA...')
-[P,s,X_new,per] = pca_display(images,400);
+[P,s,X_new,per,m] = pca_display(images,400);
 disp('PCA finished!')
 
 % 3) We use only the first 110 first principal components
 
 X_reduc = X_new(1:110,:);
+
+Y = P(:,1:110)*X_new(1:110,:) + m*ones(1,size(images,2));
 
 % 3) Separate the dataset into training and testing
 

@@ -1,4 +1,4 @@
-function [P,s,X_new,per] = pca_display(images,num)
+function [P,s,X_new,per,m] = pca_display(images,num)
 
 % Selection the portion of the data you want to use
 
