@@ -15,7 +15,7 @@ pause;
 
 % Perform dimensionality reduction using PCA
 
-[P, s, X_new, per] = PCA_faces(img1, 2);
+[P, s, X_new, per] = PCA_faces(img1, 1);
 
 % Display the first 5 eigenfaces
 
@@ -28,35 +28,7 @@ for i=1:5
 
 end
 
-% Display reconstructed images, using different numbers of eigenfaces
-
-k = 1;
-for n=[10,55,110,325]
-
-    y = P(:,1:n)*X_new(1:n,:) + m*ones(1,size(img1,2));
-
-    for i=1:10:41
-
-        subplot(5,5,k);
-        k = k + 1;
-        I = reshape(y(:,i),112,92);
-        imshow(I,[min(y(:,i)),max(y(:,i))]);
-        title(strcat(string(n), ' PCs'))
-
-    end
-
-end
-
-for i=1:10:41
-    
-    subplot(5,5,k);
-    k = k + 1;
-    I = reshape(img1(:,i),112,92);
-    imshow(I,[min(img1(:,i)),max(img1(:,i))]);
-    title('Original');
-    
-end
-
 pause;
 
 end
+

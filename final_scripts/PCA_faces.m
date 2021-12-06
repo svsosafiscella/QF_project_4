@@ -40,10 +40,11 @@ if type==1
         tper(i) = sum(per(1:i));
     end
     
-    P=U;
+    P = U;
     plot(tper,'o');
     xlabel('PC Index'); 
     ylabel('Percentage of variance');
+    pause;
     
 % 3) If option = 2, calculate the SVD of XX^T
     
@@ -51,14 +52,12 @@ elseif type==2
     % calculate pc's
     data_n = data/sqrt(sample_n-1);
     [U,S,V] = svd(data_n);
-    
     s = diag(S);
     tv = sum(s.^2);
     
     for i=1:length(s)
         per(i) = s(i)^2/tv;
         tper(i) = sum(per(1:i));
-        
     end
     
     P = U;
@@ -69,6 +68,6 @@ elseif type==2
        
 end
 
-X_new = transpose(P)*data;
+X_new = transpose(P(:,1:110))*data;
 
 end

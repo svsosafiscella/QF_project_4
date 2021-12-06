@@ -35,3 +35,18 @@ for subject=1:n_subjects
 end
 
 images = images';
+
+n = 1;
+for i=1:10:80
+    
+    subplot(2,4,n);
+    n = n + 1;
+    
+    I = reshape(images(:,i),112,92);
+    imshow(I,[min(images(:,i)),max(images(:,i))])
+
+end
+
+pause;
+
+end

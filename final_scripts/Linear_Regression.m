@@ -6,6 +6,7 @@ n_train = length(t_train);         % Number of training samples
 n_class = length(unique(t_train)); % Number of different classes
 Y = zeros(n_class, n_train);
 
+% One hot encoding
 for i=1:n_train
     Y(t_train(i),i)=1;
 end
