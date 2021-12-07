@@ -39,11 +39,19 @@ end
 disp('Classification Identification Finished!')
 
 disp('Performing LR Classification Recognition...')
-[t_pred2, accuracy2] = Linear_Regression_Recognition(X_train2,t_train2,X_test2,t_test2,2);
+[t_pred2, accuracy2] = Linear_Regression(X_train2,t_train2,X_test2,t_test2,2);
 disp(accuracy2);
 disp('Classification Recognition Finished!')
 
+disp('Performing DT Classification Identification...')
+[t_pred3, accuracy3] = Decision_Tree(X_train,t_train,X_test,t_test);
+disp(accuracy3);
+disp('Classification Recognition Finished!')
 
+disp('Performing DT Classification Recognition...')
+[t_pred4, accuracy4] = Decision_Tree(X_train2,t_train2,X_test2,t_test2);
+disp(accuracy4);
+disp('Classification Recognition Finished!')
 
 
 
