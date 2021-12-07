@@ -68,6 +68,6 @@ elseif type==2
        
 end
 
-X_new = transpose(P(:,1:110))*data;
+X_new = transpose(P)*data;
 
 end

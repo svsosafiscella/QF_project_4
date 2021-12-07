@@ -5,24 +5,31 @@ disp('Reading data...')
 [images_nonface,labels_nonface] = read_data_nonface(30);
 disp('Data read!')
 
-% 2) Perform dimensionality reduction by using PCA. Plot some PCAs and 
-%    reconstructed images
+% 2) Perform principal component analysis.
 
 disp('Performing PCA...')
-[P,s,X_new,per,m] = pca_display(images,400);
-[P2,s2,X_new2,per2,m2] = pca_display(images_nonface,30);
+[P,s,X_new,per] = PCA_faces(images, 2);
+[P2,s2,X_new2,per2] = PCA_faces(images_nonface, 2);
 disp('PCA finished!')
 
-% 3) We use only the first 110 first principal components
+%  Plot some PCAs and reconstructed images
 
-%X_reduc = X_new(1:110,:);
+pca_display(images, P, X_new);
 
-%Y = P(:,1:110)*X_new(1:110,:) + m*ones(1,size(images,2));
+% 3)  Perform dimensionality reduction. We use only the first
+%     110 first principal components
 
-% 3) Separate the dataset into training and testing
+images2 = images - mean(images,2)*ones(1,size(images,2));
+X_reduc = transpose(P(:,1:110))*images2;
 
-[X_train, X_test, t_train, t_test] = train_test_split(X_new, labels);
-[X_train_nonface, X_test_nonface, t_train_nonface, t_test_nonface] = train_test_split_nonface(X_new2, labels_nonface);
+images_nonface2 = images_nonface - mean(images,2)*ones(1,size(images_nonface,2));
+X_reduc_nonface = transpose(P2(:,1:110))*images_nonface2;
+
+% 4) Separate the dataset into training and testing
+
+[X_train, X_test, t_train, t_test] = train_test_split(X_reduc, labels);
+[X_train_nonface, X_test_nonface, t_train_nonface, t_test_nonface] = train_test_split_nonface(X_reduc_nonface, labels_nonface);
+
 % 4) Perform the classification using the output from PCA and a Linear
 %    Regressor Classifier
 
