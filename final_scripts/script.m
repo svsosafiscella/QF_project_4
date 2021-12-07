@@ -39,10 +39,7 @@ t_train2 = [ones(280,1);ones(20,1)*2];
 t_test2 = [ones(120,1);ones(10,1)*2];
 
 disp('Performing LR Classification Identification...')
-for p=1:20
-    [t_pred, accuracy] = Linear_Regression(X_train,t_train,X_test,t_test,p);
-    disp(accuracy);
-end
+[t_pred, accuracy] = Linear_Regression(X_train,t_train,X_test,t_test,9);
 disp('Classification Identification Finished!')
 
 disp('Performing LR Classification Recognition...')
