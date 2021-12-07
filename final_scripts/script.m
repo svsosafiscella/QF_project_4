@@ -49,22 +49,22 @@ t_test2 = [ones(120,1);ones(10,1)*2];
 
 disp('Performing LR Classification Identification...')
 [t_pred, accuracy] = Linear_Regression(X_train_id,t_train_id,X_test_id,t_test_id,1);
-disp(accuracy);
+disp("LR Classification Identification Accuracy: " + accuracy);
 disp('Classification Identification Finished!')
 
 disp('Performing LR Classification Recognition...')
 [t_pred2, accuracy2] = Linear_Regression(X_train2,t_train2,X_test2,t_test2,2);
-disp(accuracy2);
+disp("LR Classification Recognition Accuracy: " + accuracy2);
 disp('Classification Recognition Finished!')
 
 disp('Performing DT Classification Identification...')
 [t_pred3, accuracy3] = Decision_Tree(X_train_id,t_train_id,X_test_id,t_test_id);
-disp(accuracy3);
-disp('Classification Recognition Finished!')
+disp("DT Classification Identification Accuracy: " + accuracy3);
+disp('Classification Identification Finished!')
 
 disp('Performing DT Classification Recognition...')
 [t_pred4, accuracy4] = Decision_Tree(X_train2,t_train2,X_test2,t_test2);
-disp(accuracy4);
+disp("DT Classification Recognition Accuracy: " + accuracy4);
 disp('Classification Recognition Finished!')
 
 
