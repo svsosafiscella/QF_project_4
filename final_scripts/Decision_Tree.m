@@ -11,4 +11,5 @@ for i=1:length(t_test)
     end
 end
 
+t_pred = t_pred';
 accuracy = sum/length(t_train);
