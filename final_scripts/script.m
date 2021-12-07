@@ -27,7 +27,8 @@ X_reduc_nonface = transpose(P2(:,1:110))*images_nonface2;
 
 % 4) Separate the dataset into training and testing
 
-[X_train, X_test, t_train, t_test] = train_test_split(X_reduc, labels);
+[X_train, X_test, t_train, t_test] = train_test_split(X_reduc, labels,35,8);
+[X_train_id, X_test_id, t_train_id, t_test_id] = train_test_split(X_reduc, labels,40,8);
 [X_train_nonface, X_test_nonface, t_train_nonface, t_test_nonface] = train_test_split_nonface(X_reduc_nonface, labels_nonface);
 
 % 4) Perform the classification using the output from PCA and a Linear
@@ -39,7 +40,7 @@ t_train2 = [ones(280,1);ones(20,1)*2];
 t_test2 = [ones(120,1);ones(10,1)*2];
 
 disp('Performing LR Classification Identification...')
-[t_pred, accuracy] = Linear_Regression(X_train,t_train,X_test,t_test,9);
+[t_pred, accuracy] = Linear_Regression(X_train_id,t_train_id,X_test_id,t_test_id,9);
 disp('Classification Identification Finished!')
 
 disp('Performing LR Classification Recognition...')

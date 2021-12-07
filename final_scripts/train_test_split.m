@@ -1,15 +1,19 @@
-function [X_train, X_test, t_train, t_test] = train_test_split(data, labels)
+function [X_train, X_test, t_train, t_test] = train_test_split(data, labels, n_train_subjects, n_train_images)
 
-% For the training set we will use images from the first 35 subjects and 8 
-% images per subject
+% Function for separating the dataset of face images into training and
+% testing
+%
+% INPUT
+%  - data : pxn matrix with the face images
+%  - labels : nx1 array with the labels
+%  - n_train_subjects : how many of the subjects will be used for training
+%  - n_train_images : how many of the images of the train subject will be
+%                     used for training
+%
 
 n_feature = size(data,1);
-
 n_subjects = 40;
 n_images = 10;
-
-n_train_subjects = 35;
-n_train_images = 8;
 
 X_train = zeros(n_train_subjects*n_train_images , n_feature);
 t_train = zeros(n_train_subjects*n_train_images , 1);
