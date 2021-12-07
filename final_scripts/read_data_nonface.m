@@ -19,7 +19,7 @@ for img=1:n_images
     file = strcat('./otherimages/',string(img),'.pgm');
     fid = imread(file,'pgm');
     images_nonface(idx,:) = reshape(fid,[1,112*92]);
-    labels(idx) = 0;
+    labels(idx) = 2;
         
     idx = idx + 1;
         
