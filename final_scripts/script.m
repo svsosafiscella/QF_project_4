@@ -34,10 +34,10 @@ X_reduc_nonface = transpose(P2(:,1:110))*images_nonface2;
 % 4) Perform the classification using the output from PCA and a Linear
 %    Regressor Classifier
 
-X_train2 = [X_train X_train_nonface];
-X_test2 = [X_test X_test_nonface];
-t_train2 = [ones(280,1);ones(20,1)*2];
-t_test2 = [ones(120,1);ones(10,1)*2];
+X_train2 = [X_train_id X_train_nonface];
+X_test2 = [X_test_id X_test_nonface];
+t_train2 = [ones(320,1);ones(20,1)*2];
+t_test2 = [ones(80,1);ones(10,1)*2];
 
 disp('Performing LR Classification Identification...')
 [t_pred, accuracy] = Linear_Regression(X_train_id,t_train_id,X_test_id,t_test_id,9);
@@ -49,7 +49,7 @@ disp(accuracy2);
 disp('Classification Recognition Finished!')
 
 disp('Performing DT Classification Identification...')
-[t_pred3, accuracy3] = Decision_Tree(X_train,t_train,X_test,t_test);
+[t_pred3, accuracy3] = Decision_Tree(X_train_id,t_train_id,X_test_id,t_test_id);
 disp(accuracy3);
 disp('Classification Recognition Finished!')
 
