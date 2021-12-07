@@ -2,6 +2,8 @@ To run this project, type and run "script()" in the command window.
 During the process, you need to press Enter several times to continue the program. This is for demonstrating the figures step by step.
 
 The program will finally output the accuracies of Linear Regression and Decision Tree in terms of Face Identification and Face Recognition Tasks in the command window.
+LR = Linear Regression
+DT = Decision Tree
 
 PS:
 Make sure you have these files in your working directory when you run this project.
