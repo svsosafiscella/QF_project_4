@@ -30,8 +30,8 @@ for i=1:8
     
     subplot(2,4,i);
     
-    I = reshape(images_nonface(:,i),112,92);
-    imshow(I,[min(images_nonface(:,i)),max(images_nonface(:,i))])
+    I = reshape(images_nonface(:,i*3),112,92);
+    imshow(I,[min(images_nonface(:,i*3)),max(images_nonface(:,i*3))])
 end
 pause;
 end
