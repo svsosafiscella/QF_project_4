@@ -19,11 +19,8 @@ pca_display(images, P, X_new);
 % 3)  Perform dimensionality reduction. We use only the first
 %     110 first principal components
 
-images2 = images - mean(images,2)*ones(1,size(images,2));
-X_reduc = transpose(P(:,1:110))*images2;
-
-images_nonface2 = images_nonface - mean(images,2)*ones(1,size(images_nonface,2));
-X_reduc_nonface = transpose(P2(:,1:110))*images_nonface2;
+[X_reduc] = dim_reduc(images,P,110);
+[X_reduc_nonface] = dim_reduc(images_nonface,P2,110);
 
 % 4) Separate the dataset into training and testing
 
