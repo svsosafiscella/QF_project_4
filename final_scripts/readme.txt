@@ -7,6 +7,8 @@ DT = Decision Tree
 
 PS:
 Make sure you have these files in your working directory when you run this project.
+att_faces
+otherImages
 Decision_Tree.m
 dim_reduc.m
 Linear_Regression.m
